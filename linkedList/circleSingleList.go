@@ -70,12 +70,48 @@ func (*CircleSingleList) Delete(head *CircleSingleList, index int) *CircleSingle
 			pre = pointer
 			pointer = pointer.Next
 		}
-		if index == step {
+		if pointer != head {
 			P("find it")
 			pre.Next = pointer.Next
 		} else {
 			P("not find it")
 		}
 		return head
+	}
+}
+
+//随机插入
+func (*CircleSingleList) Insert(head *CircleSingleList, index int, value string) *CircleSingleList {
+	P(index,"随机数是")
+	node := &CircleSingleList{value, nil}
+	if nil == head {
+		node.Next = node
+		return node
+	} else if index == 1 {
+		tail := head
+		for tail.Next != head {
+			tail = tail.Next
+		}
+		tail.Next = node
+		node.Next = head
+		return node
+	} else
+	{
+		pre := head
+		pointer := head.Next
+		step := 2
+		for pointer != head && index != step {
+			step++
+			pre = pointer
+			pointer = pointer.Next
+		}
+		if index == step {
+			pre.Next = node
+			node.Next = pointer
+		} else {
+			P(index, "插入位置不存在")
+		}
+		return head
+
 	}
 }

@@ -11,5 +11,5 @@ func P(v interface{},header ... string){
 	}
 }
 func PA(v interface{}){
-	fmt.Printf("%#v\n",v)
+	fmt.Printf("%p\n",v)
 }

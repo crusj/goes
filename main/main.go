@@ -94,15 +94,19 @@ func main() {
 		//2.遍历链表
 		head.Traverse(head)
 		//3.链表的头部和链表的尾部各插入一个元素
-		fmt.Println("遍历"+strings.Repeat("=",102))
+		printEquals("遍历")
 		head = head.Unshift(head, "头插")
 		head.Traverse(head)
 		//4.随机删除一个节点
-		fmt.Println("随机删除" + strings.Repeat("=", 100))
+		printEquals("随机删除")
 		r := rand.New(rand.NewSource(time.Now().UnixNano()))
 		ri := r.Intn(8)
 		P(ri, "随机数是")
 		head = head.Delete(head, ri)
+		head.Traverse(head)
+		printEquals("随机插入")
+		//5.随机插入
+		head = head.Insert(head, ri,"随机")
 		head.Traverse(head)
 
 	}
@@ -110,4 +114,15 @@ func main() {
 func sum(a, b int, total chan int) {
 	time.Sleep(1e9)
 	total <- a + b
+}
+func printEquals(tips string) {
+	var index int
+	if len(tips) > 4 {
+		index = 100 - len(tips) - 4
+	} else if len(tips) < 4 {
+		index = 100 + 4 - len(tips)
+	} else {
+		index = 104
+	}
+	fmt.Println(tips + strings.Repeat("=", index))
 }
