@@ -7,6 +7,7 @@ import (
 	. "goes/print"
 	"goes/sorts"
 	"math/rand"
+	"strings"
 	"time"
 )
 
@@ -84,6 +85,25 @@ func main() {
 		head = nil
 
 	case 4: //单项循环链表
+		//1.创建一条元素个数为5个单项循环链表
+		head := &CircleSingleList{"张三", nil}
+		head.Push(head, "李四")
+		head.Push(head, "王五")
+		head.Push(head, "赵六")
+		head.Push(head, "谢七")
+		//2.遍历链表
+		head.Traverse(head)
+		//3.链表的头部和链表的尾部各插入一个元素
+		fmt.Println("遍历"+strings.Repeat("=",102))
+		head = head.Unshift(head, "头插")
+		head.Traverse(head)
+		//4.随机删除一个节点
+		fmt.Println("随机删除" + strings.Repeat("=", 100))
+		r := rand.New(rand.NewSource(time.Now().UnixNano()))
+		ri := r.Intn(8)
+		P(ri, "随机数是")
+		head = head.Delete(head, ri)
+		head.Traverse(head)
 
 	}
 }
