@@ -106,7 +106,33 @@ func main() {
 		head.Traverse(head)
 		printEquals("随机插入")
 		//5.随机插入
-		head = head.Insert(head, ri,"随机")
+		head = head.Insert(head, ri, "随机")
+		head.Traverse(head)
+	case 5: //双向链表
+		//1.创建一个元素个数为5个的双向链表
+		printEquals("双向链表")
+		head := &DuLinkedList{"张三", nil, nil}
+		head.Push(head, "李四")
+		head.Push(head, "王五")
+		head.Push(head, "赵六")
+		head.Push(head, "谢七")
+		//2.traverse 遍历
+		head.Traverse(head)
+		//3.unshift and push
+		printEquals("双向链表unshift")
+		head = head.Unshift(head, "何二")
+		head.Traverse(head)
+		//4.insert
+		printEquals("双向链表insert")
+		head = head.Insert(head, 3, "3333")
+		head.Traverse(head)
+		//5.pop
+		printEquals("双向链表pop")
+		head.Pop(head)
+		head.Traverse(head)
+		//6.shift
+		printEquals("双向链表shift")
+		head = head.Shift(head)
 		head.Traverse(head)
 
 	}
