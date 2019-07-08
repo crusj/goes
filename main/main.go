@@ -134,6 +134,48 @@ func main() {
 		printEquals("双向链表shift")
 		head = head.Shift(head)
 		head.Traverse(head)
+	case 6: //双向循环链表
+		//1.创建一个元素为5个的双向链表
+		printEquals("question1")
+		a := "张三"
+		head := &CircleDuLinkedList{&a, nil, nil}
+		head.Next = head
+		head.Pre = head
+		b := "李四"
+		head.Push(head, &b)
+		c := "王五"
+		head.Push(head, &c)
+		d := "赵六"
+		head.Push(head, &d)
+		e := "谢七"
+		head.Push(head, &e)
+		//2.traverse
+		head.Traverse(head)
+		//3.push unshift
+		printEquals("unshift")
+		f := "UNSHIFT"
+		head = head.Unshift(head, &f)
+		head.Traverse(head)
+
+		//4.pop shift
+		printEquals("pop")
+		head = head.Pop(head)
+		head.Traverse(head)
+
+		printEquals("shift")
+		head = head.Shift(head)
+		head.Traverse(head)
+
+		//5.insert delete
+		printEquals("insert")
+		g := "INSERT3"
+		head = head.Insert(head, 3, &g)
+		head.Traverse(head)
+
+		printEquals("delete3")
+		head = head.Delete(head,3)
+		head.Traverse(head)
+
 
 	}
 }
