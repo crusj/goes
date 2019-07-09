@@ -1,13 +1,13 @@
 package sorts
 
 //冒泡排序
-func Bubble(arr *[]int) {
-    length := len(*arr)
-    for i := 0; i <= length-1; i++ {
-        for j := 0; j <= length-2-i; j++ {
-            if (*arr)[j] > (*arr)[j+1] {
-                (*arr)[j], (*arr)[j+1] = (*arr)[j+1], (*arr)[j]
-            }
-        }
-    }
+func Bubble(container []int) {
+	len := len(container)
+	for i := 0; i < len-1; i++ {
+		for j := len - 1; j > i; j-- {
+			if container[j] < container[j-1] {
+				container[j-1], container[j] = container[j], container[j-1]
+			}
+		}
+	}
 }

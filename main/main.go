@@ -5,7 +5,7 @@ import (
 	"fmt"
 	. "goes/linkedList"
 	. "goes/print"
-	"goes/sorts"
+	. "goes/sorts"
 	"math/rand"
 	"strings"
 	"time"
@@ -37,7 +37,7 @@ func init() {
 func main() {
 	switch which {
 	case 1: //排序
-		oldNums := generateRandNums(1000, 200000)
+		oldNums := generateRandNums(1000, 20000)
 		oldNumsCopy := make([]int, len(oldNums))
 		oldNumsCopy2 := make([]int, len(oldNums))
 
@@ -45,16 +45,16 @@ func main() {
 		copy(oldNumsCopy2, oldNums)
 
 		start := time.Now()
-		sorts.Bubble(&oldNums)
+		Bubble(oldNums)
 		fmt.Printf("冒泡排序运行时间%v秒\n", time.Since(start))
 
-		start = time.Now()
-		sorts.QuickSort2(oldNumsCopy)
-		fmt.Printf("快速排序运算运行时间%v秒\n", time.Since(start))
+		/*		start = time.Now()
+				QuickSort2(oldNumsCopy)
+				fmt.Printf("快速排序运算运行时间%v秒\n", time.Since(start))
 
-		start = time.Now()
-		sorts.QuickSort(&oldNumsCopy2)
-		fmt.Printf("快速排序2运算运行时间%v\n", time.Since(start))
+				start = time.Now()
+				QuickSort(&oldNumsCopy2)
+				fmt.Printf("快速排序2运算运行时间%v\n", time.Since(start))*/
 	case 2: //channel求和
 		total := make(chan int)
 		go sum(1, 3, total)
@@ -173,9 +173,9 @@ func main() {
 		head.Traverse(head)
 
 		printEquals("delete3")
-		head = head.Delete(head,3)
+		head = head.Delete(head, 3)
 		head.Traverse(head)
-
+	case 7: //冒泡排序
 
 	}
 }
