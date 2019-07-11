@@ -5,25 +5,22 @@ import (
 	"fmt"
 	. "goes/linkedList"
 	. "goes/print"
-	. "goes/sorts"
+	"goes/sorts"
 	"math/rand"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
 )
 
-func generateRandNums(max, number int) (re []int) {
-	if max <= 0 {
-		max = 100
-	}
+func generateRandNums(max int, wg *sync.WaitGroup, oldNums *Num) {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	t := r.Intn(max)
+	oldNums.mutex.Lock()
+	oldNums.value = append(oldNums.value, t)
+	oldNums.mutex.Unlock()
 
-	for i := 0; i < number; i++ {
-		r := rand.New(rand.NewSource(time.Now().UnixNano()))
-		t := r.Intn(max)
-		re = append(re, t)
-	}
-	return
-
+	wg.Done()
 }
 
 var (
@@ -35,34 +32,33 @@ func init() {
 	flag.Parse()
 }
 
+type Num struct {
+	value []int
+	mutex sync.Mutex
+}
+
 func main() {
+	P(runtime.NumCPU(), "cpu核心数为")
+	runtime.GOMAXPROCS(runtime.NumCPU())
 	switch which {
 	case 1: //排序
-		oldNums := generateRandNums(1000, 20)
-		oldNumsCopy := make([]int, len(oldNums))
-		oldNumsCopy2 := make([]int, len(oldNums))
-
-		copy(oldNumsCopy, oldNums)
-		copy(oldNumsCopy2, oldNums)
-
-		/*		start := time.Now()
-				Bubble(oldNumsCopy)
-				fmt.Printf("冒泡排序运行时间%v秒\n", time.Since(start))*/
-
-		start := time.Now()
-		oldNumsCopy = []int{6, 2, 7, 9, 4, 8}
 		wg := &sync.WaitGroup{}
-		ch := make(chan int, 1)
-		go QuickSort1(oldNumsCopy, wg, ch)
-		go PrintR(ch)
-
+		P("生成随机数中.....")
+		oldNums := &Num{}
+		for i := 0; i < 2000000; i++ {
+			wg.Add(1)
+			go generateRandNums(100000, wg, oldNums)
+		}
 		wg.Wait()
-		P(oldNumsCopy)
-		fmt.Printf("交换运行时间花费%v秒\n", time.Since(start))
+		//P(oldNums.value,"rand nums")
+		wg.Add(1)
+		start := time.Now()
+		go sorts.QuickSort1(oldNums.value,wg)
+		wg.Wait()
+		fmt.Printf("消耗时间为%v\n",time.Since(start))
+		//P(oldNums.value,"after sort")
 
-		start = time.Now()
-		oldNumsCopy2 = QuickSort2(oldNumsCopy2)
-		fmt.Printf("比较快速排序花费%v秒\n", time.Since(start))
+	case 9:
 
 	case 2: //channel求和
 		total := make(chan int)
@@ -184,8 +180,24 @@ func main() {
 		printEquals("delete3")
 		head = head.Delete(head, 3)
 		head.Traverse(head)
-	case 7: //快速排序
-
+	case 7: //test
+		a := make(chan int, 1)
+		wg := &sync.WaitGroup{}
+		wg.Add(1)
+		go func() {
+			for x := range a {
+				fmt.Println(x)
+			}
+			wg.Done()
+			fmt.Println("THE CHANNEL IS CLOSED")
+		}()
+		a <- 1
+		close(a)
+		wg.Wait()
+	case 8:
+		t := make([][]int, 1)
+		t[0] = append(t[0], 3)
+		P(t)
 	}
 }
 func sum(a, b int, total chan int) {

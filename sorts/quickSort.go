@@ -6,11 +6,9 @@ import (
 )
 
 //交换快速排序
-func QuickSort1(arr []int, wg *sync.WaitGroup, ch chan int) {
+func QuickSort1(arr []int, wg *sync.WaitGroup) {
 	len := len(arr)
 	if len <= 1 {
-		wg.Done()
-		return
 	} else {
 		base := arr[0]
 		left := 0
@@ -31,11 +29,11 @@ func QuickSort1(arr []int, wg *sync.WaitGroup, ch chan int) {
 				break
 			}
 		}
-		wg.Done()
-		ch <- left
-		go QuickSort1(arr[0:left], wg, ch)
-		go QuickSort1(arr[left+1:], wg, ch)
+		wg.Add(2)
+		go QuickSort1(arr[0:left], wg)
+		go QuickSort1(arr[left+1:], wg)
 	}
+	wg.Done()
 }
 func QuickSort3(arr []int) {
 	len := len(arr)
@@ -83,8 +81,9 @@ func QuickSort2(arr []int) []int {
 		return append(append(QuickSort2(less), base), QuickSort2(more)...)
 	}
 }
-func PrintR(ch chan int) {
+func PrintR(ch chan string, wg *sync.WaitGroup) {
 	for v := range ch {
 		fmt.Println(v)
+
 	}
 }
