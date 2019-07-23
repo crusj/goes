@@ -25,10 +25,12 @@ func generateRandNums(max int, wg *sync.WaitGroup, oldNums *Num) {
 
 var (
 	which int
+	num   int
 )
 
 func init() {
 	flag.IntVar(&which, "which", 1, "which program")
+	flag.IntVar(&num, "num", 1, "sort nums")
 	flag.Parse()
 }
 
@@ -45,7 +47,7 @@ func main() {
 		wg := &sync.WaitGroup{}
 		P("生成随机数中.....")
 		oldNums := &Num{}
-		for i := 0; i < 2000000; i++ {
+		for i := 0; i < num; i++ {
 			wg.Add(1)
 			go generateRandNums(100000, wg, oldNums)
 		}
@@ -53,9 +55,9 @@ func main() {
 		//P(oldNums.value,"rand nums")
 		wg.Add(1)
 		start := time.Now()
-		go sorts.QuickSort1(oldNums.value,wg)
+		go sorts.QuickSort1(oldNums.value, wg)
 		wg.Wait()
-		fmt.Printf("消耗时间为%v\n",time.Since(start))
+		fmt.Printf("消耗时间为%v\n", time.Since(start))
 		//P(oldNums.value,"after sort")
 
 	case 9:
@@ -198,6 +200,19 @@ func main() {
 		t := make([][]int, 1)
 		t[0] = append(t[0], 3)
 		P(t)
+	case 10: //插入排序
+		wg := &sync.WaitGroup{}
+		P("生成随机数中.....")
+		oldNums := &Num{}
+		for i := 0; i < num; i++ {
+			wg.Add(1)
+			go generateRandNums(100000, wg, oldNums)
+		}
+		wg.Wait()
+		start := time.Now()
+		sorts.InsertSort(oldNums.value)
+		P(time.Since(start), "花费时间")
+
 	}
 }
 func sum(a, b int, total chan int) {
