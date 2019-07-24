@@ -5,6 +5,7 @@ import (
 	"fmt"
 	. "goes/linkedList"
 	. "goes/print"
+	"goes/search"
 	"goes/sorts"
 	"math/rand"
 	"runtime"
@@ -213,6 +214,23 @@ func main() {
 		sorts.InsertSort(oldNums.value)
 		P(time.Since(start), "花费时间")
 
+	case 11: //二分查找
+		wg := &sync.WaitGroup{}
+		P("随机数生成中")
+		oldNums := &Num{}
+		for i := 0; i < num; i++ {
+			wg.Add(1)
+			go generateRandNums(100000, wg, oldNums)
+		}
+		wg.Wait()
+		wg.Add(1)
+		start := time.Now()
+		go sorts.QuickSort1(oldNums.value, wg)
+		wg.Wait()
+		fmt.Printf("消耗时间为%v\n", time.Since(start))
+
+		P(search.BinarySearch(oldNums.value, 10))
+		fmt.Printf("消耗时间为%v\n", time.Since(start))
 	}
 }
 func sum(a, b int, total chan int) {
