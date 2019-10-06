@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"goes/leetcode"
 	. "goes/linkedList"
 	. "goes/print"
 	"goes/search"
@@ -231,6 +232,15 @@ func main() {
 
 		P(search.BinarySearch(oldNums.value, 10))
 		fmt.Printf("消耗时间为%v\n", time.Since(start))
+	case 12: //两数之和
+		twoSum := leetcode.TwoSum{[]int{55, 24, 76, 45}, [][]int{}, 100}
+		twoSum.Deal(1)
+		twoSum.Empty()
+		twoSum.Deal(2)
+		twoSum.Empty()
+		twoSum.Deal(3)
+		twoSum.Empty()
+
 	}
 }
 func sum(a, b int, total chan int) {

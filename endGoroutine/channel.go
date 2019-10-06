@@ -21,7 +21,6 @@ func Run(done chan int) {
 func Main() {
 	c := make(chan int)
 	go Run(c)
-
 	fmt.Println("wait")
 	time.Sleep(1e9 * 5)
 	c <- 1
