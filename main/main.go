@@ -240,11 +240,19 @@ func main() {
 		twoSum.Empty()
 		twoSum.Deal(3)
 		twoSum.Empty()
-	case 13://罗马数字转证书
+	case 13: //罗马数字转证书
 		romain2Integer := &leetcode.RomainToInteger{}
 		romain2Integer.Romain = "MDIV"
 		romain2Integer.Deal()
-
+	case 14: //最长公共前缀
+		longestCommonPrefix := &leetcode.LongestCommonPrefix{
+			Input:  []string{"abc", "abcde", "abcdef"},
+			Output: "",
+		}
+		longestCommonPrefix.Answer1()
+		longestCommonPrefix.Output = ""
+		longestCommonPrefix.Answer2()
+		fmt.Println(longestCommonPrefix)
 
 	}
 }
