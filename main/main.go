@@ -254,6 +254,12 @@ func main() {
 		longestCommonPrefix.Answer2()
 		fmt.Println(longestCommonPrefix)
 
+		input := []string{
+			"zxsfas", "zxs", "zxc", "zxd",
+		}
+		fmt.Printf("输入字符串数组为%v,最长公共前缀为:%s\n", input, longestCommonPrefix.Answer3(input))
+		fmt.Println(longestCommonPrefix.CommonPrefix("zxs","zxc"))
+
 	}
 }
 func sum(a, b int, total chan int) {

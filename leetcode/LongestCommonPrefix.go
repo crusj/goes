@@ -40,7 +40,7 @@ func (it *LongestCommonPrefix) Answer1() {
 	} else {
 		it.Output = it.Input[0] //假设数组第一个元素就是最长公共前缀
 		for i := 1; i < inputLen; i++ {
-			it.Output = it.commonPrefix(it.Output, it.Input[i])
+			it.Output = it.CommonPrefix(it.Output, it.Input[i])
 			if it.Output != "" {
 				continue
 			} else {
@@ -94,18 +94,36 @@ func (it *LongestCommonPrefix) Answer2() {
 
 }
 
+//分治法
+func (it *LongestCommonPrefix) Answer3(input []string) (rsl string) {
+	inputLen := len(input)
+	if inputLen == 0 {
+		rsl = ""
+	} else if inputLen == 1 {
+		rsl = input[0]
+	} else if inputLen == 2 {
+		rsl = it.CommonPrefix(input[0], input[1])
+	} else {
+		halfInputLen := inputLen / 2
+		rsl = it.CommonPrefix(it.Answer3(input[0:halfInputLen+1]), it.Answer3(input[halfInputLen+1:]))
+	}
+	return
+}
+
 //求两个字符串的公共前缀
-func (it *LongestCommonPrefix) commonPrefix(a string, b string) string {
+func (it *LongestCommonPrefix) CommonPrefix(a string, b string) (rsl string) {
 	aLen := len(a)
 	bLen := len(b)
 	for i := 0; i < aLen; i++ {
-		if i < bLen-1 && a[i] == b[i] {
-			continue
+		if i >= bLen {
+			rsl = b[0:]
+			return
 		} else {
-			if i != aLen-1 {
-				return a[0 : i+1]
+			if a[i] == b[i] {
+				continue
 			} else {
-				return a[0:]
+				rsl = a[0 : i]
+				return
 			}
 		}
 	}
