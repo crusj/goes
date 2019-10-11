@@ -258,7 +258,15 @@ func main() {
 			"zxsfas", "zxs", "zxc", "zxd",
 		}
 		fmt.Printf("输入字符串数组为%v,最长公共前缀为:%s\n", input, longestCommonPrefix.Answer3(input))
-		fmt.Println(longestCommonPrefix.CommonPrefix("zxs","zxc"))
+		fmt.Println(longestCommonPrefix.CommonPrefix("zxs", "zxc"))
+
+		//二分法
+		input = []string{
+			"tzxcf", "tzxbb", "tzxc", "tzx", "tzxcftgsdf",
+		}
+		inputClone := make([]string, len(input))
+		copy(inputClone, input)
+		fmt.Printf("输入字符串数组为%v,最长公共前缀为:%s\n", inputClone, longestCommonPrefix.Answer4(input, ""))
 
 	}
 }

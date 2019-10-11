@@ -110,6 +110,69 @@ func (it *LongestCommonPrefix) Answer3(input []string) (rsl string) {
 	return
 }
 
+//二分法
+func (it *LongestCommonPrefix) Answer4(input []string, lcp string) string {
+	inputLen := len(input)
+	if inputLen == 0 {
+		return lcp
+	}
+	//找出长度最短的字符串并和第一位交换未知
+	for i := 1; i < inputLen; i++ {
+		if len(input[i]) < len(input[0]) {
+			input[i], input[0] = input[0], input[i]
+		}
+	}
+	pivotLen := len(input[0])
+
+	if pivotLen == 0 {
+		return lcp
+	}
+	if pivotLen == 1 {
+		maybeLcp := lcp + input[0]
+		if it.isLSP(input[1:], maybeLcp) {
+			return maybeLcp
+		} else {
+			return lcp
+		}
+	}
+	//中间
+	middle := pivotLen / 2
+	lcpWithMiddleLeft := lcp + input[0][0:middle]
+	if it.isLSP(input[1:], lcpWithMiddleLeft) {
+		input[0] = input[0][middle:]
+		return it.Answer4(input, lcpWithMiddleLeft)
+	} else {
+		input[0] = input[0][0:middle]
+		return it.Answer4(input, lcp)
+	}
+
+}
+
+/**
+ * 比较字符串是否为数组的最长公共前缀
+ */
+func (it *LongestCommonPrefix) isLSP(input []string, lsp string) bool {
+	lspLen := len(lsp)
+	for i := 0; i < len(input); i++ {
+		if lspLen > len(input[i]) {
+			return false
+		} else if lspLen == len(input[i]) {
+			if lsp != input[i] {
+				return false
+			} else {
+				continue
+			}
+		} else {
+			if lsp != input[i][0:lspLen] {
+				return false
+			} else {
+				continue
+			}
+		}
+	}
+	return true
+}
+
 //求两个字符串的公共前缀
 func (it *LongestCommonPrefix) CommonPrefix(a string, b string) (rsl string) {
 	aLen := len(a)
@@ -122,7 +185,7 @@ func (it *LongestCommonPrefix) CommonPrefix(a string, b string) (rsl string) {
 			if a[i] == b[i] {
 				continue
 			} else {
-				rsl = a[0 : i]
+				rsl = a[0:i]
 				return
 			}
 		}
