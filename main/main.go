@@ -267,6 +267,13 @@ func main() {
 		inputClone := make([]string, len(input))
 		copy(inputClone, input)
 		fmt.Printf("输入字符串数组为%v,最长公共前缀为:%s\n", inputClone, longestCommonPrefix.Answer4(input, ""))
+	case 15: //括号成对
+		bracket := leetcode.Bracket{
+			Input:   "{}[]{[}]}",
+			IsValid: false,
+		}
+		bracket.Deal()
+		fmt.Println(bracket.IsValid)
 
 	}
 }
