@@ -274,7 +274,19 @@ func main() {
 		}
 		bracket.Deal()
 		fmt.Println(bracket.IsValid)
-
+	case 16: //测试
+		sortChain := new(leetcode.SortChain)
+		sortChain.ChainOne = sortChain.CreateChain([]int{
+			1, 2, 4, 6,
+		})
+		sortChain.ChainTwo = sortChain.CreateChain([]int{
+			2, 3, 7, 8,
+		})
+		sortChain.Deal()
+		for point := sortChain.ChainOne; point != nil; {
+			fmt.Println(point.Value)
+			point = point.Next
+		}
 	}
 }
 func sum(a, b int, total chan int) {
