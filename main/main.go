@@ -287,7 +287,15 @@ func main() {
 			fmt.Println(point.Value)
 			point = point.Next
 		}
+	case 17: //删除排序数组中的重复项目
+		dsd := new(leetcode.DeleteSortArrDuplicate)
+		dsd.Input = []int{
+			0,0,1,2,3,3,4,5,6,7,8,9,
+		}
+		dsd.Deal()
+		fmt.Println(dsd)
 	}
+
 }
 func sum(a, b int, total chan int) {
 	time.Sleep(1e9)
