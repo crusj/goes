@@ -290,10 +290,19 @@ func main() {
 	case 17: //删除排序数组中的重复项目
 		dsd := new(leetcode.DeleteSortArrDuplicate)
 		dsd.Input = []int{
-			0,0,1,2,3,3,4,5,6,7,8,9,
+			0, 0, 1, 2, 3, 3, 4, 5, 6, 7, 8, 9,
 		}
 		dsd.Deal()
 		fmt.Println(dsd)
+	case 18: //删除数组中给定的值
+		dva := new(leetcode.DeleteValueFromArray)
+		dva.Input = []int{
+			1, 2, 3, 4, 5, 6, 7,
+		}
+		fmt.Println(dva.Input)
+		dva.Delete = 7
+		dva.Way2()
+		fmt.Println(dva)
 	}
 
 }
