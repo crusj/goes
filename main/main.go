@@ -303,7 +303,20 @@ func main() {
 		dva.Delete = 7
 		dva.Way2()
 		fmt.Println(dva)
+	case 19: //实现Substr
+		ss := new(leetcode.Substr)
+		ss.Input = "god is satan"
+		ss.Search = "god"
+		ss.Deal()
+		fmt.Println(ss)
+		ss.Search = "sata"
+		ss.Deal()
+		fmt.Println(ss)
+		ss.Search = "gaiyin"
+		ss.Deal()
+		fmt.Println(ss)
 	}
+
 
 }
 func sum(a, b int, total chan int) {
