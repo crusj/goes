@@ -1,6 +1,8 @@
 package leetcode
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /**
 实现 strStr() 函数。
@@ -24,7 +26,7 @@ type Substr struct {
 	Search string
 	index  int
 }
-//todo KMP算法
+
 func (it *Substr) Deal() {
 	inputLen := len(it.Input)
 	searchLen := len(it.Search)
@@ -50,6 +52,65 @@ func (it *Substr) Deal() {
 			it.index = -1
 		}
 	}
+}
+
+//KMP算法
+func (it *Substr) Kmp() {
+	//不匹配位对应的最长公共前后缀长度
+	table := make(map[int]int)
+	table[0] = -1 //下标为0则最长公共前后缀长度为-1
+	for i := 1; i <= len(it.Search)-1; i++ {
+		table[i] = it.maxCommonPrefixSuffix(it.Search[0:i])
+	}
+	i := 0 //主串下标位置
+	j := 0 //模式串下标位置
+	inputLen := len(it.Input)
+	searchLen := len(it.Search)
+	init := 0
+	for j < searchLen && (inputLen-i >= searchLen-j) {
+		if it.Input[i] == it.Search[j] {
+			i++
+			j++
+		} else {
+			i = j - table[j] + init
+			init = i
+			if table[j] >= 0 {//初始化
+				j = table[j]
+			}else{
+				j = 0
+			}
+		}
+	}
+	if j == searchLen { //匹配成功
+		it.index = i - j
+	} else {
+		it.index = -1
+	}
+}
+
+//求字符串的最长公共前后缀
+func (it *Substr) maxCommonPrefixSuffix(str string) int {
+	strLen := len(str)
+	//计算前缀
+	prefix := make(map[string]int)
+	for i := 0; i < strLen-1; i++ {
+		prefix[str[0:i+1]] = i + 1
+	}
+	//计算后缀
+	suffix := make(map[string]int)
+	for i := 1; i <= strLen-1; i++ {
+		suffix[str[i:]] = strLen - 1
+	}
+	//找出最长公共前后缀
+	longest := 0
+	for k, v := range prefix {
+		if _, ok := suffix[k]; ok {
+			if v > longest {
+				longest = v
+			}
+		}
+	}
+	return longest
 }
 func (it *Substr) String() string {
 	return fmt.Sprintf("hackstack为:%s,needle为:%s,index为:%d", it.Input, it.Search, it.index)

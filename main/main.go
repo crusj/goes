@@ -315,6 +315,12 @@ func main() {
 		ss.Search = "gaiyin"
 		ss.Deal()
 		fmt.Println(ss)
+	case 20://利用KMP算法实现Substr
+		kmp := new(leetcode.Substr)
+		kmp.Input = "EDaBAEDABABEDFEDEDC"
+		kmp.Search = "EDED"
+		kmp.Kmp()
+		fmt.Println(kmp)
 	}
 
 
