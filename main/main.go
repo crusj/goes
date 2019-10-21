@@ -315,14 +315,21 @@ func main() {
 		ss.Search = "gaiyin"
 		ss.Deal()
 		fmt.Println(ss)
-	case 20://利用KMP算法实现Substr
+	case 20: //利用KMP算法实现Substr
 		kmp := new(leetcode.Substr)
 		kmp.Input = "EDaBAEDABABEDFEDEDC"
 		kmp.Search = "EDED"
 		kmp.Kmp()
 		fmt.Println(kmp)
+	case 21: //查找元素在数组中的位置，如果不存在则返回插入的位置
+		SearchSortArray := new(leetcode.SearchSortArray)
+		SearchSortArray.Input = []int{
+			1, 3, 5, 77, 88, 111, 234, 456, 989, 1121,
+		}
+		SearchSortArray.Search = 4
+		SearchSortArray.Deal()
+		fmt.Println(SearchSortArray)
 	}
-
 
 }
 func sum(a, b int, total chan int) {
