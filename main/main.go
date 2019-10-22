@@ -329,6 +329,11 @@ func main() {
 		SearchSortArray.Search = 4
 		SearchSortArray.Deal()
 		fmt.Println(SearchSortArray)
+	case 22: //报数
+		numberOff := new(leetcode.NumberOff)
+		println(numberOff.Deal(0))
+		println(numberOff.Deal(8))
+
 	}
 
 }
