@@ -333,6 +333,12 @@ func main() {
 		numberOff := new(leetcode.NumberOff)
 		println(numberOff.Deal(0))
 		println(numberOff.Deal(8))
+  case 23://回溯组合
+    leetcode39 := new(leetcode.Leetcode39)
+    leetcode39.Input = []int{2,3,4,5,6,7,8,9}
+    leetcode39.Target =  9
+    leetcode39.Deal()
+    fmt.Println(leetcode39)
 
 	}
 
