@@ -339,6 +339,11 @@ func main() {
     leetcode39.Target =  9
     leetcode39.Deal()
     fmt.Println(leetcode39)
+  case 24://排列组合
+    combine := new(leetcode.Combine)
+    combine.Input = []int{2,3,4,5}
+    combine.Deal()
+    fmt.Println(combine)
 
 	}
 
