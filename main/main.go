@@ -3,11 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"goes/leetcode"
-	. "goes/linkedList"
-	. "goes/print"
-	"goes/search"
-	"goes/sorts"
+	"github.com/crusj/goes/leetcode"
+	. "github.com/crusj/goes/linkedList"
+	. "github.com/crusj/goes/print"
+	"github.com/crusj/goes/search"
+	"github.com/crusj/goes/sorts"
 	"math/rand"
 	"runtime"
 	"strings"
@@ -333,17 +333,22 @@ func main() {
 		numberOff := new(leetcode.NumberOff)
 		println(numberOff.Deal(0))
 		println(numberOff.Deal(8))
-  case 23://回溯组合
-    leetcode39 := new(leetcode.Leetcode39)
-    leetcode39.Input = []int{2,3,4,5,6,7,8,9}
-    leetcode39.Target =  9
-    leetcode39.Deal()
-    fmt.Println(leetcode39)
-  case 24://排列组合
-    combine := new(leetcode.Combine)
-    combine.Input = []int{2,3,4,5}
-    combine.Deal()
-    fmt.Println(combine)
+	case 23: //回溯组合
+		leetcode39 := new(leetcode.Leetcode39)
+		leetcode39.Input = []int{2, 3, 4, 5, 6, 7, 8, 9}
+		leetcode39.Target = 9
+		leetcode39.Deal()
+		fmt.Println(leetcode39)
+	case 24: //全排列
+		arrange := new(leetcode.Arrage)
+		arrange.Input = []int{2, 3, 4, 5}
+		arrange.Deal()
+		fmt.Println(arrange)
+	case 25:
+		combine := new(leetcode.Combine)
+		combine.Input = []int{2, 3, 4, 5}
+		combine.Deal()
+		fmt.Println(combine)
 
 	}
 

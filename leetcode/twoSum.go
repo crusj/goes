@@ -2,7 +2,7 @@ package leetcode
 
 import (
 	"fmt"
-	"goes/tool"
+	"github.com/crusj/goes/tool"
 	"strconv"
 	"strings"
 )

@@ -1,7 +1,7 @@
 package linkedList
 
 import (
-	. "goes/print"
+	. "github.com/crusj/goes/print"
 )
 
 type CircleDuLinkedList struct {
