@@ -349,7 +349,11 @@ func main() {
 		combine.Input = []int{2, 3, 4, 5}
 		combine.Deal()
 		fmt.Println(combine)
-
+	case 26: //最大连续子序和
+		leetcode53 := new(leetcode.Question53)
+		leetcode53.Input = []int{-1, 2, 3, -2, -3, 0, -3, 5, -1, 4}
+		leetcode53.Deal()
+		fmt.Println(leetcode53)
 	}
 
 }
