@@ -354,6 +354,11 @@ func main() {
 		leetcode53.Input = []int{-1, 2, 3, -2, -3, 0, -3, 5, -1, 4}
 		leetcode53.Deal()
 		fmt.Println(leetcode53)
+	case 27: //字符串最后一个单词长度
+		leetCode58 := new(leetcode.Question58)
+		leetCode58.Input = "x "
+		leetCode58.Deal()
+		fmt.Println(leetCode58)
 	}
 
 }
