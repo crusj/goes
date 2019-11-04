@@ -359,6 +359,23 @@ func main() {
 		leetCode58.Input = "x "
 		leetCode58.Deal()
 		fmt.Println(leetCode58)
+	case 28: //加一
+		leetcode66 := new(leetcode.Question66)
+		leetcode66.Input = []int{
+			1, 2, 3, 4,
+		}
+		leetcode66.Deal()
+		fmt.Println(leetcode66)
+		leetcode66.Input = []int{
+			9, 9, 9, 9,
+		}
+		leetcode66.Deal()
+		fmt.Println(leetcode66)
+		leetcode66.Input = []int{
+			9, 9, 8, 9,
+		}
+		leetcode66.Deal()
+		fmt.Println(leetcode66)
 	}
 
 }
