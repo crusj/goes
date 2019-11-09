@@ -376,6 +376,11 @@ func main() {
 		}
 		leetcode66.Deal()
 		fmt.Println(leetcode66)
+	case 29: //二进制求和
+		leetcode67 := new(leetcode.Question67)
+		leetcode67.Input = []string{"1101010", "111000"}
+		leetcode67.Deal()
+		fmt.Println(leetcode67)
 	}
 
 }
