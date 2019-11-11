@@ -381,6 +381,25 @@ func main() {
 		leetcode67.Input = []string{"1101010", "111000"}
 		leetcode67.Deal()
 		fmt.Println(leetcode67)
+	case 30: //求平方根
+		leetCode69 := new(leetcode.Question69)
+		leetCode69.Input = 8
+		leetCode69.Deal()
+		fmt.Println(leetCode69)
+	case 31: //爬楼梯
+		leetCode70 := new(leetcode.Question70)
+		leetCode70.Input = 4
+		leetCode70.Deal()
+		fmt.Println(leetCode70)
+	case 32: //删除链表中重复元素
+		head := &SingleNode{"1", nil}
+		head.Push(head, "2")
+		head.Push(head, "2")
+		head.Push(head, "3")
+		head.Push(head, "3")
+		leetcode83 := new(leetcode.Question83)
+		leetcode83.Input = head
+		leetcode83.Deal()
 	}
 
 }

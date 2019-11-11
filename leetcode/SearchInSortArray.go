@@ -32,10 +32,6 @@ type SearchSortArray struct {
 	Search int
 	Index  int
 }
-type Node struct {
-	Value int
-	Index int
-}
 
 func (it *SearchSortArray) Deal() {
 	nodes := make([]*Node, 0)
