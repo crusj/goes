@@ -8,6 +8,7 @@ import (
 	. "github.com/crusj/goes/print"
 	"github.com/crusj/goes/search"
 	"github.com/crusj/goes/sorts"
+	"github.com/crusj/goes/tree"
 	"math/rand"
 	"runtime"
 	"strings"
@@ -400,6 +401,82 @@ func main() {
 		leetcode83 := new(leetcode.Question83)
 		leetcode83.Input = head
 		leetcode83.Deal()
+	case 33: //二叉树
+		root := &tree.Node{Value: 1}
+		node2 := &tree.Node{Value: 2}
+		node3 := &tree.Node{Value: 3}
+		node4 := &tree.Node{Value: 4}
+		node5 := &tree.Node{Value: 5}
+		node6 := &tree.Node{Value: 6}
+		node7 := &tree.Node{Value: 7}
+		root.SetLChild(node2)
+		root.SetRChild(node3)
+		node2.SetLChild(node4)
+		node2.SetRChild(node5)
+		node3.SetLChild(node6)
+		node3.SetRChild(node7)
+		//root为一棵满二叉
+		tree := &tree.BinaryTree{}
+		println("前序遍历")
+		tree.PreOrder(root)
+		println()
+		println("中序遍历")
+		tree.InOrder(root)
+		println()
+		println("后序遍历")
+		tree.PostOrder(root)
+	case 34: //判断两棵二叉树是否相同
+		treeOne := &tree.Node{Value: 1}
+		node2 := &tree.Node{Value: 2}
+		node3 := &tree.Node{Value: 3}
+		node4 := &tree.Node{Value: 4}
+		node5 := &tree.Node{Value: 5}
+		node6 := &tree.Node{Value: 6}
+		node7 := &tree.Node{Value: 7}
+		treeOne.SetLChild(node2)
+		treeOne.SetRChild(node3)
+		node2.SetLChild(node4)
+		node2.SetRChild(node5)
+		node3.SetLChild(node6)
+		node3.SetRChild(node7)
+
+		treeTwo := &tree.Node{Value: 1}
+		node22 := &tree.Node{Value: 2}
+		node23 := &tree.Node{Value: 3}
+		node24 := &tree.Node{Value: 4}
+		node25 := &tree.Node{Value: 5}
+		node26 := &tree.Node{Value: 6}
+		node27 := &tree.Node{Value: 7}
+		treeTwo.SetLChild(node22)
+		treeTwo.SetRChild(node23)
+		node22.SetLChild(node24)
+		node22.SetRChild(node25)
+		node23.SetLChild(node26)
+		node23.SetRChild(node27)
+		leetcode100 := leetcode.Question100{}
+		fmt.Println(leetcode100.Deal(treeOne, treeTwo))
+	case 35: //合并有序数组
+		leetcode88 := new(leetcode.Question88)
+		leetcode88.ArrOne = []int{2, 3, 5, 7,}
+		leetcode88.ArrTwo = []int{1, 4, 6, 7}
+		leetcode88.Deal()
+	case 36: //对称树的判断
+		treeOne := &tree.Node{Value: 1}
+		node2 := &tree.Node{Value: 2}
+		node3 := &tree.Node{Value: 2}
+		node4 := &tree.Node{Value: 3}
+		node5 := &tree.Node{Value: 4}
+		node6 := &tree.Node{Value: 4}
+		node7 := &tree.Node{Value: 3}
+		treeOne.SetLChild(node2)
+		treeOne.SetRChild(node3)
+		node2.SetLChild(node4)
+		node2.SetRChild(node5)
+		node3.SetLChild(node6)
+		node3.SetRChild(node7)
+		leetcode101 := new(leetcode.Question101)
+		leetcode101.Root = treeOne
+		leetcode101.Deal()
 	}
 
 }

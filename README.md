@@ -22,4 +22,7 @@
 * leetcode69 算术平方根
 * leetcode70 爬楼梯。斐波拉契数
 * leetcode83 去除链表重复元素
+* leetcode88 合并有序数组
+* leetcode100 判断两棵二叉树是否相等
+* leetcode101 判断二叉树是否对称
 
