@@ -27,25 +27,32 @@ import (
 */
 type Question107 struct {
 	Input *tree.Node
-	Queue []*tree.Node
+	Queue [][]*tree.Node
 }
 
 func (it *Question107) Deal() {
-	it.Queue = append(it.Queue, it.Input)
+	it.Queue = append(it.Queue, []*tree.Node{it.Input})
 
-	for i := 0; i <= len(it.Queue)-1; i++ {
-		if it.Queue[i].LChild != nil {
-			it.Queue = append(it.Queue, it.Queue[i].LChild)
+	for i := 0; i <= len(it.Queue)-1; i++ { //第一层
+		if len(it.Queue[i]) > 0{
+			it.Queue = append(it.Queue, []*tree.Node{}) //增加一层
 		}
-		if it.Queue[i].RChild != nil {
-			it.Queue = append(it.Queue, it.Queue[i].RChild)
+		for j := 0; j <= len(it.Queue[i])-1; j++ {
+			if it.Queue[i][j].LChild != nil {
+				it.Queue[i+1] = append(it.Queue[i+1], it.Queue[i][j].LChild)
+			}
+			if it.Queue[i][j].RChild != nil {
+				it.Queue[i+1] = append(it.Queue[i+1], it.Queue[i][j].RChild)
+			}
 		}
 	}
 }
 func (it *Question107) String() string {
 	rsl := ""
 	for i := len(it.Queue) - 1; i >= 0; i-- {
-		rsl += fmt.Sprintf("%s ", it.Queue[i].Value)
+		for j := 0; j < len(it.Queue[i]); j++ {
+			rsl += fmt.Sprintf("%s ", it.Queue[i][j].Value)
+		}
 	}
 	return rsl
 }
