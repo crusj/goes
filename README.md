@@ -25,4 +25,7 @@
 * leetcode88 合并有序数组
 * leetcode100 判断两棵二叉树是否相等
 * leetcode101 判断二叉树是否对称
+* 前序遍历创建二叉树
+* leetcode104 二叉树最大深度
+* leetcode107 底层层序遍历二叉树  BFS
 

@@ -8,7 +8,7 @@ type BinaryTree struct {
 //前序遍历
 func (it *BinaryTree) PreOrder(p *Node) {
 	if p != nil {
-		fmt.Printf("%d ", p.Value)
+		fmt.Printf("%v ", p.Value)
 		it.PreOrder(p.LChild)
 		it.PreOrder(p.RChild)
 	}
@@ -17,21 +17,33 @@ func (it *BinaryTree) PreOrder(p *Node) {
 //中序遍历
 func (it *BinaryTree) InOrder(p *Node) {
 	if p != nil {
-		it.PreOrder(p.LChild)
-		fmt.Printf("%d ", p.Value)
-		it.PreOrder(p.RChild)
+		it.InOrder(p.LChild)
+		fmt.Printf("%v ", p.Value)
+		it.InOrder(p.RChild)
 	}
 }
 
 //后序遍历
 func (it *BinaryTree) PostOrder(p *Node) {
 	if p != nil {
-		it.PreOrder(p.LChild)
-		it.PreOrder(p.RChild)
-		fmt.Printf("%d ", p.Value)
+		it.PostOrder(p.LChild)
+		it.PostOrder(p.RChild)
+		fmt.Printf("%v ", p.Value)
 	}
 }
 
-func (it *BinaryTree) String() string {
-	return ""
+//前序遍历创建二叉树
+func (it *BinaryTree) CreateByArr(arr []string, index *int) *Node {
+	if len(arr) == *index { //完成
+		return nil
+	}
+	if arr[*index] == "#" {
+		*index++
+		return nil
+	}
+	node := &Node{Value: arr[*index]}
+	*index++
+	node.LChild = it.CreateByArr(arr, index)
+	node.RChild = it.CreateByArr(arr, index)
+	return node
 }

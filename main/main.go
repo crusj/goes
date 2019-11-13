@@ -477,6 +477,47 @@ func main() {
 		leetcode101 := new(leetcode.Question101)
 		leetcode101.Root = treeOne
 		leetcode101.Deal()
+	case 37: //前序遍历创建二叉树
+		tree := &tree.BinaryTree{}
+		preOrder := []string{"a", "b", "d", "#", "#", "e", "#", "#", "c", "f", "#", "#", "#"}
+		index := 0
+		root := tree.CreateByArr(preOrder, &index)
+		fmt.Println("前序遍历")
+		tree.PreOrder(root)
+		fmt.Println()
+		fmt.Println("中序遍历")
+		tree.InOrder(root)
+		fmt.Println()
+		fmt.Println("后序遍历")
+		tree.PostOrder(root)
+	case 38: //二叉树最大深度
+		tree := &tree.BinaryTree{}
+		//斜树
+		preOrderStr := []string{"a", "b", "c", "d", "#", "#", "#", "#", "#"}
+		index := 0
+		root := tree.CreateByArr(preOrderStr, &index)
+		leetcode104 := new(leetcode.Question104)
+		leetcode104.Tree = root
+		leetcode104.Deal()
+		fmt.Println(leetcode104)
+
+		//满二叉
+		preOrderStr = []string{"a", "b", "d", "e", "#", "#", "f", "#", "#", "c", "#", "#"}
+		index2 := 0
+		root = tree.CreateByArr(preOrderStr, &index2)
+		leetcode104.Tree = root
+		leetcode104.Deal()
+		fmt.Println(leetcode104)
+	case 39: //层遍历二叉树
+		//给定二叉树 [3,9,20,null,null,15,7] ,
+		tree := &tree.BinaryTree{}
+		preOrderStr := []string{"3", "9", "#", "#", "20", "15", "#", "#", "7", "#", "#"}
+		index := 0
+		root := tree.CreateByArr(preOrderStr, &index)
+		leetcode107 := new(leetcode.Question107)
+		leetcode107.Input = root
+		leetcode107.Deal()
+		fmt.Println(leetcode107)
 	}
 
 }

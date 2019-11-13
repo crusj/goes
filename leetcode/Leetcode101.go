@@ -30,9 +30,10 @@ type Question101 struct {
 }
 
 func (it *Question101) Deal() {
-	println(it.equal(it.Root.LChild, it.Root.RChild))
+	println(it.mirror(it.Root.LChild, it.Root.RChild))
 }
-func (it *Question101) equal(m *tree.Node, n *tree.Node) bool {
+//是否镜像对称
+func (it *Question101) mirror(m *tree.Node, n *tree.Node) bool {
 	if m == nil && n == nil {
 		return true
 	} else if m == nil || n == nil {
@@ -41,6 +42,6 @@ func (it *Question101) equal(m *tree.Node, n *tree.Node) bool {
 	if m.Value != n.Value {
 		return false
 	} else {
-		return it.equal(m.LChild, n.RChild) && it.equal(m.RChild, n.LChild)
+		return it.mirror(m.LChild, n.RChild) && it.mirror(m.RChild, n.LChild)
 	}
 }
