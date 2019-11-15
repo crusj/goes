@@ -526,6 +526,18 @@ func main() {
 		leetcode108 := new(leetcode.Question108)
 		leetcode108.Input = []int{-10, -3, 0, 5, 9}
 		leetcode108.Deal()
+	case 42: //二叉树路径节点总和
+		leetcode112 := new(leetcode.Question112)
+		preCode := []string{
+			"1", "3", "9", "#", "22", "#", "#", "6", "#", "#", "5", "7", "12", "10", "#", "#", "#", "#", "4", "#", "25", "#", "#",
+		}
+		tree := new(tree.BinaryTree)
+		index := 0
+		root := tree.CreateByArr(preCode, &index)
+		leetcode112.Sum = 35
+		leetcode112.Node = root
+		leetcode112.Deal()
+		fmt.Println(leetcode112)
 	}
 
 }
