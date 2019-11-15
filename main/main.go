@@ -538,6 +538,11 @@ func main() {
 		leetcode112.Node = root
 		leetcode112.Deal()
 		fmt.Println(leetcode112)
+	case 43: //杨辉三角
+		leetcode118 := new(leetcode.Question118)
+		leetcode118.Input = 10
+		leetcode118.Deal()
+		fmt.Println(leetcode118)
 	}
 
 }
