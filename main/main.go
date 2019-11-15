@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/crusj/goes/http"
 	"github.com/crusj/goes/leetcode"
 	. "github.com/crusj/goes/linkedList"
 	. "github.com/crusj/goes/print"
@@ -518,6 +519,13 @@ func main() {
 		leetcode107.Input = root
 		leetcode107.Deal()
 		fmt.Println(leetcode107)
+	case 40: //生成https自签证书
+		crypto := http.Crypto{}
+		crypto.Generate()
+	case 41: //高度平衡二叉树
+		leetcode108 := new(leetcode.Question108)
+		leetcode108.Input = []int{-10, -3, 0, 5, 9}
+		leetcode108.Deal()
 	}
 
 }
