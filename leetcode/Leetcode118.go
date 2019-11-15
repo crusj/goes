@@ -56,7 +56,7 @@ func (it *Question118) String() string {
 	str := ""
 	for _, floor := range it.Output {
 		for _, v := range floor {
-			str += strconv.Itoa(v)
+			str += strconv.Itoa(v)+","
 		}
 		str += "\n"
 	}

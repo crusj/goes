@@ -543,6 +543,11 @@ func main() {
 		leetcode118.Input = 10
 		leetcode118.Deal()
 		fmt.Println(leetcode118)
+	case 44://杨辉三角第N行
+		leetcode119 := new(leetcode.Question119)
+		leetcode119.Input = 10
+		leetcode119.Deal()
+		fmt.Println(leetcode119)
 	}
 
 }

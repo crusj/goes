@@ -31,4 +31,6 @@
 * leetcode108 高度平衡二叉树
 * x509创建自签https证书
 * 1eetcode112 从根节点到叶子节点，节点权重和等于某个数  BFS
+* leetcode118 杨辉三角
+* leetcode119 杨辉三角2第几行的杨辉三角
 
