@@ -11,6 +11,7 @@ import (
 	"github.com/crusj/goes/sorts"
 	"github.com/crusj/goes/tree"
 	"math/rand"
+	http2 "net/http"
 	"runtime"
 	"strings"
 	"sync"
@@ -543,13 +544,41 @@ func main() {
 		leetcode118.Input = 10
 		leetcode118.Deal()
 		fmt.Println(leetcode118)
-	case 44://杨辉三角第N行
+	case 44: //杨辉三角第N行
 		leetcode119 := new(leetcode.Question119)
 		leetcode119.Input = 10
 		leetcode119.Deal()
 		fmt.Println(leetcode119)
+	case 45:
+		helloWorldHandler := &HelloWorld{}
+		server := http2.Server{
+			Addr: "0.0.0.0:443",
+		}
+		http2.Handle("/", helloWorldHandler)
+		err := server.ListenAndServeTLS("Cert.pem", "Key.pem")
+		if err != nil {
+			fmt.Println(err)
+		}
+	case 46: //三角形最短路径
+		leetcode120 := new(leetcode.Question120)
+		leetcode120.Input = [][]int{
+			[]int{2},
+			[]int{3, 4},
+			[]int{6, 5, 7},
+			[]int{4, 1, 8, 3},
+		}
+		leetcode120.Deal()
+		fmt.Println(leetcode120)
+
 	}
 
+}
+
+type HelloWorld struct {
+}
+
+func (it *HelloWorld) ServeHTTP(w http2.ResponseWriter, r *http2.Request) {
+	fmt.Fprintf(w, "hello world")
 }
 func sum(a, b int, total chan int) {
 	time.Sleep(1e9)
