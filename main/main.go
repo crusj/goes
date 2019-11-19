@@ -574,8 +574,15 @@ func main() {
 		wine := leetcode.NewWine(wines)
 		price := wine.Way(wines, 1)
 		fmt.Printf("总价最高%d,售卖顺序为%s\n", price, "")
-		priceDp := wine.WayDp(wines, 0,len(wines) - 1)
+		priceDp := wine.WayDp(wines, 0, len(wines)-1)
 		fmt.Printf("dp总价最高%d,售卖顺序为%s", priceDp, "")
+	case 48: //股票买入卖出
+		leetcode121 := new(leetcode.Question121)
+		leetcode121.Input = []int{
+			7,1,5,3,6,4,
+		}
+		leetcode121.Deal()
+		fmt.Println(leetcode121)
 
 	}
 
