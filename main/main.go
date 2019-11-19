@@ -574,7 +574,7 @@ func main() {
 		wine := leetcode.NewWine(wines)
 		price := wine.Way(wines, 1)
 		fmt.Printf("总价最高%d,售卖顺序为%s\n", price, "")
-		priceDp := wine.WayDp(wines, 1)
+		priceDp := wine.WayDp(wines, 0,len(wines) - 1)
 		fmt.Printf("dp总价最高%d,售卖顺序为%s", priceDp, "")
 
 	}

@@ -5,7 +5,7 @@ wine := [1,4,2,3]  切片位置的值为红酒价格，从1到N开始每增加�
 求价格最大化
 */
 type Wine struct {
-	PriceYears map[int][]int
+	PriceYears [][]int
 	Order      map[int][][]int
 }
 
@@ -13,11 +13,9 @@ type Wine struct {
 func NewWine(wine []int) *Wine {
 	wineLen := len(wine)
 	instance := new(Wine)
-	instance.PriceYears = make(map[int][]int, 0)
-	instance.Order = make(map[int][][]int, 0)
-	for _, v := range wine {
-		instance.PriceYears[v] = make([]int, wineLen)
-		instance.Order[v] = make([][]int, wineLen)
+	instance.PriceYears = make([][]int, wineLen)
+	for i, _ := range instance.PriceYears {
+		instance.PriceYears[i] = make([]int, wineLen)
 	}
 	return instance
 }
@@ -39,25 +37,25 @@ func (it *Wine) Way(wine []int, year int) int {
 }
 
 //动态规划
-func (it *Wine) WayDp(wine []int, year int) int {
-	wineLen := len(wine)
-	if wineLen > 1 {
-		a := it.PriceYears[wine[0]][year-1]
-		b := it.PriceYears[wine[wineLen-1]][year-1 ]
-		if a == 0 {
-			a = wine[0]*year + it.WayDp(wine[1:], year+1)
-			it.PriceYears[wine[0]][year-1] = a
-		}
-		if b == 0 {
-			b = wine[wineLen-1]*year + it.WayDp(wine[0:wineLen-1], year+1)
-			it.PriceYears[wine[wineLen-1]][year-1] = b
-		}
-		if a > b {
-			return a
-		} else {
-			return b
-		}
+func (it *Wine) WayDp(wine []int, begin, end int) int {
+	year := len(wine) - (end - begin + 1) + 1
+	if begin == end {
+		return wine[begin] * year
+	} else if begin > end {
+		return 0
 	} else {
-		return wine[0] * year
+		if it.PriceYears[begin][end] != 0 {
+			return it.PriceYears[begin][end]
+		} else {
+			a := it.WayDp(wine, begin+1, end)
+			b := it.WayDp(wine, begin, end - 1)
+			if a < b {
+				it.PriceYears[begin][end] = b + year*wine[end]
+			} else {
+				it.PriceYears[begin][end] = a + year*wine[begin]
+			}
+			return it.PriceYears[begin][end]
+		}
+
 	}
 }
