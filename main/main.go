@@ -579,10 +579,13 @@ func main() {
 	case 48: //股票买入卖出
 		leetcode121 := new(leetcode.Question121)
 		leetcode121.Input = []int{
-			7,1,5,3,6,4,
+			2, 1, 6, 7, 5, 4,
 		}
 		leetcode121.Deal()
 		fmt.Println(leetcode121)
+	case 49: //数学组合问题
+		leetcode121 := new(leetcode.Question121)
+		fmt.Println(leetcode121.Extra([]int{2, 3, 4, 5}, 2))
 
 	}
 

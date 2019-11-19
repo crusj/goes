@@ -25,46 +25,59 @@ import "fmt"
 type Question121 struct {
 	Input  []int
 	Output int
+	Buy    int
+	Sale   int
 }
 
 func (it *Question121) Deal() {
-	v := it.max(it.Input, true, 0)
-	if v > 0 {
-		it.Output = v
-	}else{
+	v1, v2, v3 := it.max(it.Input, true, 0, 0)
+	if v3 > 0 {
+		it.Output = v3
+		it.Buy = v1
+		it.Sale = v2
+	} else {
 		it.Output = 0
 	}
+
 }
-func (it *Question121) max(input []int, buy bool, v int) int {
+func (it *Question121) max(input []int, buy bool, v int, day int) (int, int, int) {
 	if buy == true && len(input) == 2 {
-		return input[len(input)-1] - input[len(input)-2]
+		return len(input) - 1, len(input), input[len(input)-1] - input[len(input)-2]
 	}
 	if buy == false && len(input) == 1 {
 
-		return input[len(input)-1] - v
+		return day, len(input), input[len(input)-1] - v
 	}
 	//买入
 	if buy == true {
 		//买入
-		a := it.max(input[1:], false, input[0])
+		a1, a2, a3 := it.max(input[1:], false, input[0], len(it.Input)-len(input)+1)
 		//不买
-		b := it.max(input[1:], true, 0)
-		if a > b {
-			return a
+		b1, b2, b3 := it.max(input[1:], true, 0, 0)
+		if a3 > b3 {
+			return a1, a2, a3
 		} else {
-			return b
+			return b1, b2, b3
 		}
 	} else {
 		a := input[0] - v //卖出
-		b := it.max(input[1:], false, v)
-		if b > a {
-			return b
+		b1, b2, b3 := it.max(input[1:], false, v, day)
+		if b3 > a {
+			return b1, b2, b3
 		} else {
-			return a
+			return day, len(it.Input) - len(input) + 1, a
 		}
 	}
 }
+func (it *Question121) Extra(arr []int, num int) int {
+	if len(arr) == num  && num == 0{
+		return 1
+	}
+	a := it.Extra(arr[1:], num-1)
+	b := it.Extra(arr[1:], num)
+	return a + b
+}
 
 func (it *Question121) String() string {
-	return fmt.Sprintf("最大利润为:%d", it.Output)
+	return fmt.Sprintf("最大利润为:%d,买入时间第%d天,卖出时间第%d天", it.Output, it.Buy, it.Sale)
 }
