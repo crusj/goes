@@ -338,9 +338,10 @@ func main() {
 		println(numberOff.Deal(8))
 	case 23: //回溯组合
 		leetcode39 := new(leetcode.Leetcode39)
-		leetcode39.Input = []int{2, 3, 4, 5, 6, 7, 8, 9}
+		leetcode39.Input = []int{1,2, 3, 4, 5, 6, 7, 8, 9}
 		leetcode39.Target = 9
 		leetcode39.Deal()
+		fmt.Printf("方案有%d种",len(leetcode39.Output))
 		fmt.Println(leetcode39)
 	case 24: //全排列
 		arrange := new(leetcode.Arrage)
@@ -586,6 +587,14 @@ func main() {
 	case 49: //数学组合问题
 		leetcode121 := new(leetcode.Question121)
 		fmt.Println(leetcode121.Extra([]int{2, 3, 4, 5}, 2))
+	case 50://从小到大的数组任意元素任意次数的和为某个数的次数
+		leetcode122 := new(leetcode.NumberCombine)
+		leetcode122.Input = []int {
+			1,2,3,4,5,6,7,8,9,
+		}
+		leetcode122.Total = 9
+		leetcode122.Deal()
+		fmt.Println(leetcode122)
 
 	}
 
