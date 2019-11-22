@@ -602,7 +602,13 @@ func main() {
 		}
 		leetcode122.Deal()
 		fmt.Println(leetcode122)
+	case 52://回文
+		leetcode125 := new(leetcode.Question125)
+		leetcode125.Input = "a man, a plan, a canal: panamA"
+		leetcode125.Deal()
+		fmt.Println(leetcode125)
 	}
+
 
 }
 
