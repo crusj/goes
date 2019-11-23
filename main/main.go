@@ -620,6 +620,44 @@ func main() {
 		fmt.Println(leetcode136.Output)
 		leetcode136.Way4()
 		fmt.Println(leetcode136.Output)
+	case 54: //链表是否有环
+		leetcode141 := new(leetcode.Question141)
+		singleList := new(SingleNode)
+		singleList.Value = "0"
+		node1 := new(SingleNode)
+		node1.Value = "1"
+		node2 := new(SingleNode)
+		node2.Value = "2"
+		node3 := new(SingleNode)
+		node3.Value = "3"
+		node4 := new(SingleNode)
+		node4.Value = "4"
+		node5 := new(SingleNode)
+		node5.Value = "5"
+		//无环链表
+		singleList.Next = node1
+		node1.Next = node2
+		node2.Next = node3
+		node3.Next = node4
+		node4.Next = node5
+		leetcode141.Head = singleList
+		leetcode141.Way1()
+		fmt.Println(leetcode141.Output)
+		leetcode141.Way2()
+		fmt.Println(leetcode141.Output)
+		//有环
+		singleList.Next = node1
+		node1.Next = node2
+		node2.Next = node3
+		node3.Next = node4
+		node4.Next = node5
+		node5.Next = node3
+		leetcode141.Head = singleList
+		leetcode141.Way1()
+		fmt.Println(leetcode141.Output)
+		leetcode141.Way2()
+		fmt.Println(leetcode141.Output)
+
 
 	}
 
