@@ -602,13 +602,26 @@ func main() {
 		}
 		leetcode122.Deal()
 		fmt.Println(leetcode122)
-	case 52://回文
+	case 52: //回文
 		leetcode125 := new(leetcode.Question125)
 		leetcode125.Input = "a man, a plan, a canal: panamA"
 		leetcode125.Deal()
 		fmt.Println(leetcode125)
-	}
+	case 53: //只出现一次
+		leetcode136 := new(leetcode.Question136)
+		leetcode136.Input = []int{
+			1, 1, 2, 2, 4, 5, 5,
+		}
+		leetcode136.Way1()
+		fmt.Println(leetcode136.Output)
+		leetcode136.Way2()
+		fmt.Println(leetcode136.Output)
+		leetcode136.Way3()
+		fmt.Println(leetcode136.Output)
+		leetcode136.Way4()
+		fmt.Println(leetcode136.Output)
 
+	}
 
 }
 
