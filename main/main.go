@@ -657,7 +657,37 @@ func main() {
 		fmt.Println(leetcode141.Output)
 		leetcode141.Way2()
 		fmt.Println(leetcode141.Output)
+	case 55: //leetcode160相交链表
+		node1 := &SingleNode{Value: "1"}
+		node2 := &SingleNode{Value: "2"}
+		node3 := &SingleNode{Value: "3"}
+		node4 := &SingleNode{Value: "4"}
 
+		node5 := &SingleNode{Value: "5"}
+		node6 := &SingleNode{Value: "6"}
+
+		node1.Next = node2
+		node2.Next = node3
+		node3.Next = node4
+		node4.Next = node5
+
+		node6.Next = node4
+		leetcode160 := new(leetcode.Question160)
+		leetcode160.LinkOne = node1
+		leetcode160.LinkTwo = node6
+		leetcode160.Deal()
+		fmt.Println(leetcode160)
+	case 56: //最小栈
+		leetcode155 := new(leetcode.Question155)
+		leetcode155.Push(11)
+		leetcode155.Push(3)
+		leetcode155.Push(5)
+		leetcode155.Push(7)
+		leetcode155.Push(4)
+		x, _ := leetcode155.Top()
+		fmt.Println(x)
+		y, _ := leetcode155.GetMin()
+		fmt.Println(y)
 
 	}
 
