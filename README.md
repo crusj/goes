@@ -44,4 +44,6 @@
 * leetcode141 链表是否有环 哈希表、快慢指针
 * leetcode155 最小栈
 * leetcode160 相交链表
+* leetcode167 两数和 暴力法、哈希表、双指针(因为有序)
+* leetcode168 求一个整数对应的EXCEL列名
 

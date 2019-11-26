@@ -688,7 +688,20 @@ func main() {
 		fmt.Println(x)
 		y, _ := leetcode155.GetMin()
 		fmt.Println(y)
+	case 57: //两数和
+		leetcode167 := new(leetcode.Question167)
+		leetcode167.Input = []int{
+			1, 2, 3, 4, 5, 6, 7,
+		}
+		leetcode167.Sum = 15
+		leetcode167.Deal()
+		fmt.Printf("下标为%d,%d", leetcode167.Index[0], leetcode167.Index[1])
 
+	case 58: //EXCEL字段
+		leetcode168 := new(leetcode.Question168)
+		leetcode168.Input = 52
+		leetcode168.Deal()
+		fmt.Println(leetcode168.Output)
 	}
 
 }
