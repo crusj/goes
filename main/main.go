@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/crusj/goes/dp"
 	"github.com/crusj/goes/http"
 	"github.com/crusj/goes/leetcode"
 	. "github.com/crusj/goes/linkedList"
@@ -702,6 +703,12 @@ func main() {
 		leetcode168.Input = 52
 		leetcode168.Deal()
 		fmt.Println(leetcode168.Output)
+	case 59: //最少硬币问题
+		startTime := time.Now()
+		coins := []int{1, 3, 5}
+		amount := 50
+		fmt.Printf("至少需要硬币数量%d\n", dp.MinCoinAmount(coins, amount))
+		fmt.Printf("执行时间为%s", time.Since(startTime))
 	}
 
 }
